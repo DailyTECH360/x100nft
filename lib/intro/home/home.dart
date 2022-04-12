@@ -394,7 +394,7 @@ class Home extends StatelessWidget {
               backgroundColor: Colors.white30,
               child: Icon(Icons.insert_chart_outlined, color: Colors.white, size: 50),
             ),
-            onTap: () => Get.to(const LendingPage()),
+            onTap: () => Get.to(const IncomePage()),
           ),
           const SizedBox(width: 8),
           Column(

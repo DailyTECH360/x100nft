@@ -66,15 +66,31 @@ class IncomePage extends GetWidget<UserCtr> {
                     visible: (controller.walletChoose.value == commission),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 8, left: 0, right: 0, bottom: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Wrap(
+                        spacing: 5,
+                        runSpacing: 5,
+                        alignment: WrapAlignment.center,
+                        runAlignment: WrapAlignment.center,
                         children: [
                           ElevatedButton.icon(
                             icon: const Icon(Icons.change_circle, color: Colors.white),
-                            label: Text(convert2w, style: (Get.width < 370) ? const TextStyle(fontSize: 12) : const TextStyle(fontSize: 14)),
+                            label: Text(getBnb, style: const TextStyle(fontSize: 14)),
                             onPressed: () {
                               if (CheckSV.convertOpenCheck(context)) {
-                                convertCOM(context);
+                                if (CheckSV.checkMonthTimeUTCConvertCOM(context)) {
+                                  convertCOM(context, symbol: 'BNB');
+                                }
+                              }
+                            },
+                          ),
+                          ElevatedButton.icon(
+                            icon: const Icon(Icons.change_circle, color: Colors.white),
+                            label: Text(getUsdt, style: const TextStyle(fontSize: 14)),
+                            onPressed: () {
+                              if (CheckSV.convertOpenCheck(context)) {
+                                if (CheckSV.checkMonthTimeUTCConvertCOM(context)) {
+                                  convertCOM(context, symbol: 'USDT');
+                                }
                               }
                             },
                           ),

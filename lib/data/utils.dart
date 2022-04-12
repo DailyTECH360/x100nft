@@ -85,6 +85,36 @@ double getWalletBalance(String wallet) {
   }
 }
 
+double getWalletComBySymbol(String symbol) {
+  if (symbol == 'USDT') {
+    return UserCtr.to.userDB!.wComUSDT!;
+  } else if (symbol == 'BNB') {
+    return UserCtr.to.userDB!.wComBNB!;
+  } else {
+    return 0;
+  }
+}
+
+getWalletStringSymbol(String symbol) {
+  if (symbol == 'USDT') {
+    return 'WUsd';
+  } else if (symbol == 'BNB') {
+    return 'wBnb';
+  } else {
+    return '';
+  }
+}
+
+getWalletTotalStringSymbol(String symbol) {
+  if (symbol == 'USDT') {
+    return 'wComTotalUSDT';
+  } else if (symbol == 'BNB') {
+    return 'wComTotalBNB';
+  } else {
+    return '';
+  }
+}
+
 String getSymbolByWallet(String wallet) {
   if (wallet == 'wUsd') {
     return symbolUsdt;

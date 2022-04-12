@@ -148,7 +148,7 @@ class SetModel {
     roundNum = documentSnapshot.data()!['roundNum'] ?? 0;
     phanTramLine = documentSnapshot.data()!['phanTramLine'] ?? 0;
     sellOpen = documentSnapshot.data()!['sellOpen'] ?? false;
-    convertOpen = documentSnapshot.data()!['convertOpen'] ?? false;
+    convertOpen = documentSnapshot.data()!['convertOpen'] ?? true;
 
     masterPayPK = documentSnapshot.data()!['masterPayPK'] ?? '';
     masterGetAddress = documentSnapshot.data()!['masterGetAddress'] ?? '';

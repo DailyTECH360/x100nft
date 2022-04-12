@@ -123,7 +123,7 @@ class CheckSV {
     return false;
   }
 
-  static bool checkTimeUTCConvertCOM(BuildContext context) {
+  static bool checkMondayTimeUTCConvertCOM(BuildContext context) {
     final nowUtc = DateTime.now().toUtc();
     final h = nowUtc.hour;
     const monday = DateTime.monday;
@@ -133,6 +133,20 @@ class CheckSV {
       return true;
     } else {
       showTopSnackBar(context, const CustomSnackBar.error(message: 'You can convert from 00:00 - 24:00 UTC every Monday!'));
+    }
+    return false;
+  }
+
+  static bool checkMonthTimeUTCConvertCOM(BuildContext context) {
+    final nowUtc = DateTime.now().toUtc();
+    final day = nowUtc.day;
+    // const monday = DateTime.monday;
+    // final weekday = nowUtc.weekday;
+    debugPrint('Day convert: $day');
+    if (day == 1) {
+      return true;
+    } else {
+      showTopSnackBar(context, CustomSnackBar.error(message: convertTimeMonth));
     }
     return false;
   }

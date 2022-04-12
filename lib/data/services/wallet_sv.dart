@@ -11,11 +11,11 @@ import 'services.dart';
 double svsPrice = 0;
 double getE99({required double amount, required double price}) => (amount / price);
 
-Future<void> convertCOM(BuildContext context) {
+convertCOM(BuildContext context, {required String symbol}) {
   double amountConvert = UserCtr.to.userDB!.wCom!;
-  if (amountConvert > 0) {
+  if (CheckSV.balanceCheck(context, dk: getWalletComBySymbol(symbol) > 0)) {
     return Get.defaultDialog(
-      middleText: '$convert $symbolUsdt $amountConvert(100%) to wallet!\n$sure',
+      middleText: '$convert $symbol $amountConvert(100%) to wallet!\n$sure',
       textCancel: no,
       textConfirm: yes,
       confirmTextColor: Colors.white,
@@ -23,26 +23,36 @@ Future<void> convertCOM(BuildContext context) {
       buttonColor: AppColors.primaryColor,
       onConfirm: () async {
         Get.back();
-        await updateUserDB(uid: UserCtr.to.userDB!.uid!, data: {'wCom': 0});
-        await saveAnyField(coll: 'users', doc: UserCtr.to.userDB!.uid!, field: 'wUsd', amount: amountConvert);
+        await updateUserDB(uid: UserCtr.to.userDB!.uid!, data: {getWalletTotalStringSymbol(symbol): 0});
+        await saveAnyField(
+          coll: 'users',
+          doc: UserCtr.to.userDB!.uid!,
+          field: getWalletStringSymbol(symbol),
+          amount: amountConvert,
+        );
 
-        await addHisCommissions(amount: -amountConvert, uData: UserCtr.to.userDB!, type: 'Convert to wallet');
-        await addTransactions(amount: amountConvert, type: 'Convert', note: 'Convert from commission', mainUserDB: UserCtr.to.userDB!);
+        await addHisCommissions(
+          amount: -amountConvert,
+          uData: UserCtr.to.userDB!,
+          type: 'Convert to wallet',
+          symbol: symbol,
+        );
+        await addTransactions(
+          amount: amountConvert,
+          symbol: symbol,
+          wallet: getWalletStringSymbol(symbol),
+          type: 'Convert',
+          note: 'Convert from commission',
+          mainUserDB: UserCtr.to.userDB!,
+        );
 
         showTopSnackBar(context, const CustomSnackBar.success(message: 'Convert is DONE!'), additionalTopPadding: 250, onTap: () => Get.back());
       },
     );
-  } else {
-    return Get.defaultDialog(
-      middleText: 'Balance need > 0!',
-      textConfirm: ok,
-      confirmTextColor: Colors.white,
-      onConfirm: () => Get.back(),
-    );
   }
 }
 
-Future<void> convertCom5050(context, {required UserModel mainUserDB, required String tokenName}) async {
+Future<void> convertCom5050(context, {required UserModel mainUserDB, required String tokenName, required String symbol}) async {
   double amount50 = mainUserDB.wCom! * 50 / 100;
   if (CheckSV.balanceCheck(context, dk: mainUserDB.wCom! > 0)) {
     Get.defaultDialog(
@@ -63,10 +73,17 @@ Future<void> convertCom5050(context, {required UserModel mainUserDB, required St
           Loading.show(text: 'Convert...', textSub: '$notCloseApp!');
           // Clear wallet, add His Com:
           await updateUserDB(uid: mainUserDB.uid!, data: {'wCom': 0});
-          await addHisCommissions(amount: -mainUserDB.wCom!, uData: UserCtr.to.userDB!, type: 'Convert to wallet');
+          await addHisCommissions(amount: -mainUserDB.wCom!, uData: UserCtr.to.userDB!, type: 'Convert to wallet', symbol: symbol);
 
           await saveAnyField(coll: 'users', doc: mainUserDB.uid!, field: 'wUsd', amount: amount50);
-          await addTransactions(amount: amount50, type: 'Convert', note: 'From 50%/commission convert', mainUserDB: mainUserDB);
+          await addTransactions(
+            amount: amount50,
+            symbol: symbol,
+            wallet: getWalletStringSymbol(symbol),
+            type: 'Convert',
+            note: 'From 50%/commission convert',
+            mainUserDB: mainUserDB,
+          );
 
           await saveAnyField(coll: 'users', doc: mainUserDB.uid!, field: 'wTokenE99', amount: amount50);
           await addTransactions(

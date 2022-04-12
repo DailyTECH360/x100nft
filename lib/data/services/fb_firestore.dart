@@ -318,17 +318,17 @@ Future<void> addTransactions({
 }
 
 //GHI VAO GIAO DICH COMMISSION:
-Future<void> addHisCommissions({required double amount, required UserModel uData, String? type}) async {
+Future<void> addHisCommissions({required double amount, required UserModel uData, String? type, required String symbol}) async {
   await _firestore.collection('commissions').add({
     'amount': amount,
     'fromVolume': 0,
     'fromUid': 'Me',
-    'fromPhone': 'Main wallet',
+    'fromPhone': 'Me',
     'uid': uData.uid,
     'type': type,
     'gen': 0,
     'timeCreated': now,
-    'wallet': 'wCom',
+    'wallet': getWalletStringSymbol(symbol),
     't': (uData.role == 'dev' || uData.role == 'T') ? true : false,
   });
 }
