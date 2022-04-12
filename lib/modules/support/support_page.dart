@@ -27,13 +27,13 @@ class SupportPage extends GetView<UserCtr> {
                   pic: 'assets/brand/192.png',
                   link: webLink,
                 ),
-                const SizedBox(height: 8),
-                Wg.linkCon(
-                  title: '$symbolToken on $scanName',
-                  subtitle: 'Smartcontract on blockchain',
-                  pic: scanLogo,
-                  link: scTokenLink,
-                ),
+                // const SizedBox(height: 8),
+                // Wg.linkCon(
+                //   title: '$symbolToken on $scanName',
+                //   subtitle: 'Smartcontract on blockchain',
+                //   pic: scanLogo,
+                //   link: scTokenLink,
+                // ),
                 const SizedBox(height: 8),
                 Wg.linkCon(
                   title: '$symbolToken Email support',
