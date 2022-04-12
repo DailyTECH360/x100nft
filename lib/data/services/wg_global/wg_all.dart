@@ -2159,14 +2159,17 @@ class BankWidget extends GetView<UserCtr> {
 
 Widget bankItem(String data) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text('${data.toString().split('_').first}: ', style: const TextStyle(color: Colors.white)),
-      Text(stringDot(text: data.toString().split('_').last), style: const TextStyle(color: Colors.white)),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('${data.toString().split('_').first}: ', style: const TextStyle(color: Colors.white)),
+          Text(stringDot(text: data.toString().split('_').last), style: const TextStyle(color: Colors.white)),
+        ],
+      ),
       const SizedBox(width: 5),
       InkWell(
-          splashColor: Colors.white60,
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
-          customBorder: Border.all(width: 1, color: Colors.white38),
           child: const Icon(Icons.remove_circle_outline, color: Colors.grey),
           onTap: () async => await reAnyFieldValue(coll: 'users', doc: UserCtr.to.userDB!.uid!, field: 'bank', e: data)),
     ],

@@ -228,7 +228,7 @@ class Home extends StatelessWidget {
                       children: <Widget>[
                         MaterialButton(onPressed: () => Get.to(const LendingPage()), child: const Icon(Icons.add_chart, color: Colors.white)),
                         MaterialButton(onPressed: () => Get.to(const StakingPage()), child: const Icon(Icons.leaderboard, color: Colors.white)),
-                        const SizedBox(width: 60),
+                        const SizedBox(width: 20),
                         MaterialButton(onPressed: () => Get.to(const IncomePage()), child: const Icon(Icons.account_balance_wallet, color: Colors.white)),
                         MaterialButton(onPressed: () => Get.to(const WalletPage()), child: const Icon(Icons.account_balance, color: Colors.white))
                       ],
