@@ -637,7 +637,7 @@ class Wg {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text('$symbold ', style: const TextStyle(color: Colors.white60, fontSize: 12)),
+                      // Text('$symbold ', style: const TextStyle(color: Colors.white60, fontSize: 12)),
                       Text(NumF.decimals(num: total), style: const TextStyle(color: Colors.white, fontSize: 13)),
                     ],
                   ),

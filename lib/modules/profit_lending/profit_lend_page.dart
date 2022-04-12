@@ -64,8 +64,7 @@ class ProfitLendPage extends GetWidget<UserCtr> {
                       return Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(border: Border.all(color: Colors.black26), color: Colors.white10),
-                        child: Text('${ctr.toTextByFilter(bet).value}: #${sumBy['total']} = $symbold${NumF.decimals(num: sumBy['amount'])}',
-                            style: const TextStyle(color: Colors.white)),
+                        child: Text('${ctr.toTextByFilter(bet).value}: #${sumBy['total']} = ${NumF.decimals(num: sumBy['amount'])}', style: const TextStyle(color: Colors.white)),
                       );
                     },
                     itemComparator: (item1, item2) => item1.timeCreated!.compareTo(item2.timeCreated!),
