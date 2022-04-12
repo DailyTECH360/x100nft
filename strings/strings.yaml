@@ -1,0 +1,366 @@
+strings_all:
+  text1: Welcome
+  text2: Join
+  text3: Join now
+  text4: Log in
+  text5: Log out
+  text6: SignIn
+  text7: SignUp
+  text8: SignOut
+  text9: By email
+  text10: By Google
+  text11: By phone
+  text12: Join by email
+  text13: Join by phone number
+  text14: Login by google
+  text15: Login by google account
+  text16: With google
+  text17: Exit
+  text18: Register
+  text19: Request
+  text20: Refresh
+  text21: Ok
+  text22: "Yes!"
+  text23: "No!"
+  text24: Thanks
+  text25: Done
+  text26: Success
+  text27: Successfully
+  text28: Save
+  text29: Confirm
+  text30: Next
+  text31: Continue
+  text32: Warning
+  text33: Caution
+  text34: More
+  text35: Cancel
+  text36: Close
+  text37: Skip
+  text38: Withdraw
+  text39: Transfer
+  text40: Receive
+  text41: Convert
+  text42: Disable
+  text43: Enable
+  text44: Network
+  text45: Edit Image
+  text46: Upload Image
+  text47: Upload
+  text48: Active acc
+  text49: Buy
+  text50: Sell
+  text51: Buy now
+  text52: Add
+  text53: Remove
+  text54: Sent
+  text55: Send
+  text56: Go
+  text57: Link
+  text58: Link now
+  text59: Submitted
+  text60: Convert to wallet
+  text61: Level
+  text62: Point
+  text63: Balance
+  text64: Account balance
+  text65: Main Wallet
+  text66: Wallet
+  text67: Wallet history
+  text68: My Wallet
+  text69: Income
+  text70: My Income
+  text71: My Level
+  text72: Commission Wallet
+  text73: USD Wallet
+  text74: Commission
+  text75: Commission history
+  text76: My Commission
+  text77: Invest
+  text78: Investment List
+  text79: Invest now
+  text80: Invest confirm
+  text81: My Invests
+  text82: Add Invest
+  text83: Delete this investment order
+  text84: The investment package has been deleted
+  text85: The investment package has been end
+  text86: The minimum investment package needed is
+  text87: Invest created successfully
+  text88: Delete
+  text89: Day
+  text90: End
+  text91: Finish
+  text92: Profit
+  text93: Profit history
+  text94: Profit of
+  text95: My Profile
+  text96: Received
+  text97: Sales
+  text98: My Sales
+  text99: Team sales
+  text100: My Notify
+  text101: Total
+  text102: Max set
+  text103: Notify
+  text104: Notice
+  text105: Notice read
+  text106: My Play
+  text107: History play
+  text108: Support
+  text109: Support page
+  text110: Version
+  text111: New version
+  text112: Copyright
+  text113: Powered by
+  text114: All rights
+  text115: Game experience
+  text116: Staked total
+  text117: Amount total
+  text118: Current Language
+  text119: Need condition
+  text120: Convert from commission
+  text121: "Receive 10% from the income of F1 at the same level"
+  text122: "To get full of attractive commission policy, please activate your account resellers"
+  text123: Please enter passcode.
+  text124: Please enter confirm passcode.
+  text125: Return setPIN mode
+  text126: Not be empty
+  text127: "No Right!"
+  text128: Not right
+  text129: Not done
+  text130: Not eligible
+  text131: Not upload
+  text132: Not found
+  text133: No Internet
+  text134: No Internet connection
+  text135: Not Connected
+  text136: Not support on this time
+  text137: Can not be yourself
+  text138: Not close app
+  text139: Balance wallet is not enough
+  text140: The minimum amount needed is
+  text141: in ​​your wallet balance
+  text142: Balance wallet of GoPlay acc is not enough
+  text143: You do not have a Stacked package yet
+  text144: Not exist
+  text145: The field cannot be empty
+  text146: Format is not true
+  text147: Do not transfer to yourself
+  text148: Sponsor of referrer can not be yourself
+  text149: User not found
+  text150: Sponsor is not found
+  text151: Referrer can not be yourself
+  text152: Parent can not be yourself
+  text153: RefCODE is not format
+  text154: NOT RECEIVE EMAIL
+  text155: Not receive SMS OTP
+  text156: No data...
+  text157: No account
+  text158: Successfully Submitted
+  text159: Successfully activate your account
+  text160: Congratulations Your sponsor has been updated
+  text161: Copy
+  text162: Copy success
+  text163: Copy done
+  text164: Update is done
+  text165: Convert is DONE
+  text166: Transfer done
+  text167: Coming soon
+  text168: Please wait
+  text169: Time wait
+  text170: Waiting...
+  text171: Please wait SMS form phone
+  text172: Resend wait
+  text173: Connecting data...
+  text174: Try again
+  text175: "Please try again, many thanks"
+  text176: Please check again
+  text177: Maybe the phone number is wrong
+  text178: Maybe the wrong country code
+  text179: Maybe the telecommunications network has no signal
+  text180: Maybe the sim to receive SMS is not ready.
+  text181: "Every monday, You can convert from:"
+  text182: Only on Mainnet(Binance Smart Chain)
+  text183: Need active your acc
+  text184: Your Account Linked
+  text185: New member
+  text186: You have a new member
+  text187: Data connection may not be allowed or connection lost
+  text188: Please come back later
+  text189: Need choose your acc to withdrawal
+  text190: You have over airdrop the maximum limit
+  text191: You need to complete all 5 Steps above
+  text192: You have overbought the maximum limit
+  text193: You not buy with this address
+  text194: Convert is closing
+  text195: The commission withdrawal function is being updated within 48 hours
+  text196: Please try again in a few hours
+  text197: Agent
+  text198: My Agent
+  text199: My agent percentage
+  text200: Agent setting
+  text201: Confirm agent
+  text202: "Are you sure?"
+  text203: "Do you want to deposit more?"
+  text204: 2FA Setting
+  text205: Verification 2FA code
+  text206: 2FA Code is not match
+  text207: "Two-factor authentication"
+  text208: String To Secret Code
+  text209: Secret code
+  text210: Secret key
+  text211: Secret copy
+  text212: "Your account is protected by two-step verification"
+  text213: Enable Google Authenticator (or Authy)
+  text214: Deposit
+  text215: Deposit Detail
+  text216: Deposit by crypto
+  text217: Deposit required TRC20 address (TRON Blockchain)
+  text218: Click here to copy address
+  text219: Deposit ReCheck
+  text220: Copy Private key
+  text221: Go to Tronscan
+  text222: Assurance
+  text223: Register List
+  text224: Request List
+  text225: Assurance New
+  text226: Request New
+  text227: Request Send
+  text228: Registration content
+  text229: Registration content is DONE
+  text230: Request content
+  text231: Request content is DONE
+  text232: Time slot
+  text233: Time
+  text234: Date Range
+  text235: Package
+  text236: Lost
+  text237: Reason
+  text238: Image
+  text239: Terms and Conditions
+  text240: I have read and agree to the
+  text241: You must accept terms and conditions to continue
+  text242: You have the insurance package running
+  text243: Email
+  text244: Phone
+  text245: Phone number
+  text246: Your phone number
+  text247: Full Name
+  text248: Enter your name
+  text249: Enter your email
+  text250: Enter OTP code
+  text251: Enter number
+  text252: Remember account
+  text253: Already have an account
+  text254: Use another account
+  text255: Edit text
+  text256: URL Domain only
+  text257: Domain path
+  text258: Sponsor
+  text259: User
+  text260: User List
+  text261: Your sponsor
+  text262: Referrer
+  text263: With referrer
+  text264: RefCode
+  text265: Enter RefCode
+  text266: RefCode by
+  text267: Find by
+  text268: RefCode by routing
+  text269: Referal Confirm
+  text270: Ref
+  text271: RefLink
+  text272: RefLink copy
+  text273: Teams
+  text274: My Team
+  text275: Aff
+  text276: Affiliate
+  text277: Affiliate team
+  text278: Aff team
+  text279: Aff UID
+  text280: Total members
+  text281: Team of
+  text282: Children of
+  text283: GoPlay UID
+  text284: GoPlay Volume
+  text285: Link with GoPlay Acc
+  text286: Enter uid of GoPlay Acc
+  text287: GoPlay link is done
+  text288: This uid GoPlay linked with another account
+  text289: Only link 1 time
+  text290: Only link with 1 Goplay account
+  text291: Play volume is calculated from after link
+  text292: Enter amount
+  text293: Minimum
+  text294: Fee
+  text295: Payment free
+  text296: From
+  text297: To
+  text298: Other
+  text299: Transfer to
+  text300: Transfer to by refcode
+  text301: Pending
+  text302: Withdrawal history
+  text303: Withdrawal request
+  text304: Withdrawal Request Send
+  text305: Withdraw to me
+  text306: View smart contract
+  text307: Failed to update user Wallet
+  text308: Info confirm
+  text309: Receive Info
+  text310: Signin Failed
+  text311: Your email address is not format.
+  text312: Your password is wrong.
+  text313: User with this email do not exist.
+  text314: User with this email has been disabled.
+  text315: Signing in with Email and Password is not enabled.
+  text316: Too many requests. Try again later.
+  text317: The email has already been registered. Please login or reset your password.
+  text318: An undefined Error happened.
+  text319: Error signing out
+  text320: Error signing in
+  text321: Error creating Account
+  text322: Verification has expired
+  text323: Error send email
+  text324: Email verify error
+  text325: reCAPTCHA Completed
+  text326: reCAPTCHA Expired
+  text327: Failed to update user
+  text328: Failed to update user wallet
+  text329: Account Verification
+  text330: ID Verification
+  text331: Personal information
+  text332: Proof of identity
+  text333: "To secure your assets, we have to verify your identity. Please fill in correct information, it cannot be edited once verified"
+  text334: "Choose country -->"
+  text335: "1. Please make sure that the photo is complete and clearly visible, in JPG, PNG, JPEG format"
+  text336: "2. Please take a photo of your ID Card. The photo should be bright and clear, and all corners of your document must be visible"
+  text337: ID Card Front Side
+  text338: ID Card Back Side
+  text339: Selfie with your personnal paper
+  text340: We will review your documents and complete the process in 7 working days
+  text341: "Sign-in with email link (passwordless)"
+  text342: "Link account with email & password, so you have one more flexible login method"
+  text343: Link email password acc
+  text344: "Link Email & Password is done"
+  text345: Link With PhoneNumber is done
+  text346: Change
+  text347: Change email
+  text348: Use another email
+  text349: Change password
+  text350: Email invalidate
+  text351: Email Verified
+  text352: New email update is done
+  text353: Resend verify your email
+  text354: You can resend the verify email
+  text355: Resend wait after countdown timer
+  text356: Login link has been sent to your inbox
+  text357: Confirmation email has been sent to your inbox
+  text358: If your email is incorrect
+  text359: Please check your mailbox
+  text360: "Please check your mailbox and Click on the link to login! Thanks"
+  text361: Please check your mailbox and Click on the link to
+  text362: Action you need to take now
+  text363: 1. Open your email
+  text364: 2. Click on the link in your email to
+  text365: 2. Click link in your email to login
