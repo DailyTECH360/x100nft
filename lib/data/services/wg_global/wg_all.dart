@@ -595,7 +595,61 @@ class Wg {
     );
   }
 
-  static Widget incomeWallet({required String nameWallet, String? pic, Icon? icon, required double balance, required double total, Function? func, required UserCtr userCtr}) {
+  static Widget incomeProWallet({required String nameWallet, String? pic, Icon? icon, required double balance, required double total, Function? func, required UserCtr userCtr}) {
+    return InkWell(
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: (userCtr.walletChoose.value == nameWallet) ? AppColors.primaryLight.withOpacity(0.3) : Colors.white10,
+            // gradient: AppColors.linearG5,
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            border: Border.all(width: 1, color: Colors.white38),
+            boxShadow: AppColors.neumorpShadow,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InkWell(
+                    child: CircleAvatar(radius: 30, backgroundColor: Colors.white24, child: icon ?? Image.asset(pic!, height: 40)),
+                    onTap: func as void Function()?,
+                  ),
+                  const SizedBox(width: 8),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(nameWallet, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text('${"Total".tr}: ', style: const TextStyle(color: Colors.white60, fontSize: 13)),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                // mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(NumF.decimals(num: balance), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('$symbold ', style: const TextStyle(color: Colors.white60, fontSize: 12)),
+                      Text(NumF.decimals(num: total), style: const TextStyle(color: Colors.white, fontSize: 13)),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        onTap: () => userCtr.walletChoose.value = nameWallet);
+  }
+
+  static Widget incomeWallet({required String nameWallet, String? pic, Icon? icon, Function? func, required UserCtr userCtr}) {
     return InkWell(
         child: Container(
           padding: const EdgeInsets.all(8),

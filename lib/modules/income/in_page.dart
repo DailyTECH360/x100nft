@@ -30,14 +30,12 @@ class IncomePage extends GetWidget<UserCtr> {
                             child: Wg.incomeWallet(
                               nameWallet: commission,
                               userCtr: controller,
-                              balance: controller.userDB!.wCom!,
-                              total: controller.userDB!.wComTotal!,
                               icon: const Icon(Icons.card_giftcard, color: Colors.white, size: 45),
                             ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
-                            child: Wg.incomeWallet(
+                            child: Wg.incomeProWallet(
                               nameWallet: profit,
                               userCtr: controller,
                               balance: controller.userDB!.wProfit!,
@@ -52,12 +50,10 @@ class IncomePage extends GetWidget<UserCtr> {
                           Wg.incomeWallet(
                             nameWallet: commission,
                             userCtr: controller,
-                            balance: controller.userDB!.wCom!,
-                            total: controller.userDB!.wComTotal!,
                             icon: const Icon(Icons.card_giftcard, color: Colors.white, size: 45),
                           ),
                           const SizedBox(height: 10),
-                          Wg.incomeWallet(
+                          Wg.incomeProWallet(
                             nameWallet: profit,
                             userCtr: controller,
                             balance: controller.userDB!.wProfit!,
