@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class UserModel {
   String? ipJoin;
   String? ipLogin;
+  String? type;
   String? uid;
   String? phone;
   String? phoneCode;
@@ -125,6 +126,7 @@ class UserModel {
     Key? key,
     this.ipJoin,
     this.ipLogin,
+    this.type,
     this.uid,
     this.phone,
     this.phoneCode,
@@ -225,6 +227,7 @@ class UserModel {
 
   UserModel.fromDocumentSnapshot({required DocumentSnapshot<Map<String, dynamic>> documentSnapshot}) {
     uid = documentSnapshot.id;
+    type = documentSnapshot.data()!['type'] ?? '';
     ipJoin = documentSnapshot.data()!['ipJoin'] ?? '';
     ipLogin = documentSnapshot.data()!['ipLogin'] ?? '';
 
