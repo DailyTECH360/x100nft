@@ -56,7 +56,7 @@ class _PackageWidgetState extends State<PackageWidget> {
             // debugPrint("Ok".tr);
             return Container(
               // width: context.size!.width,
-              height: 455,
+              height: 380,
               alignment: Alignment.center,
               child: ListView.builder(
                 shrinkWrap: true,
@@ -64,7 +64,6 @@ class _PackageWidgetState extends State<PackageWidget> {
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    width: 260,
                     margin: const EdgeInsets.only(top: 0, left: 0, right: 10, bottom: 0),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -85,39 +84,42 @@ class _PackageWidgetState extends State<PackageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset('assets/brand/192.png', height: 80),
-                                const Divider(color: Colors.white24, height: 10, thickness: 1),
+                                const Divider(color: Colors.white38, height: 10, thickness: 1),
                                 Text('${snapshot.data!.docs[index]['title']}', style: TextStyle(color: AppColors.white, fontSize: 16, fontWeight: FontWeight.w500)),
-                                const Divider(color: Colors.white24, height: 10, thickness: 1),
                                 Text('${snapshot.data!.docs[index]['cycle']} $day', style: TextStyle(color: AppColors.white, fontSize: 20, fontWeight: FontWeight.bold)),
-                                Text(investResult, style: TextStyle(color: AppColors.white, fontSize: 16)),
+                                const Divider(color: Colors.white38, height: 10, thickness: 1),
+                                Text('$profit/$day', style: TextStyle(color: AppColors.white, fontSize: 16)),
                                 Text('${snapshot.data!.docs[index]['rateD']}%', style: TextStyle(color: AppColors.white, fontSize: 30, fontWeight: FontWeight.bold)),
-                                Text(investBonusSpecail, style: TextStyle(color: AppColors.white, fontSize: 16)),
-                                const Divider(color: Colors.white24, height: 32, thickness: 1),
+                                // Text(investBonusSpecail, style: TextStyle(color: AppColors.white, fontSize: 16)),
+                                const Divider(color: Colors.white38, height: 32, thickness: 1),
                                 InkWell(
                                   onTap: () {
                                     Get.to(NumPage(
                                         balance: getWalletBalance(UserCtr.to.walletChoose.value!).floorToDouble(), getText: numOfInput, initText: '${UserCtr.to.set!.minInvest!}'));
                                   },
-                                  child: TextFormField(
-                                    enabled: false,
-                                    controller: _textAmountCtr,
-                                    keyboardType: TextInputType.none,
-                                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
-                                    decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Colors.black12,
-                                      labelText:
-                                          '$balance : ${NumF.decimals(num: getWalletBalance(UserCtr.to.walletChoose.value!).floorToDouble())} ${getSymbolByWallet(UserCtr.to.walletChoose.value!)}',
-                                      labelStyle: const TextStyle(color: Colors.white, fontSize: 13),
-                                      hintText: 'eg: 1000000',
-                                      hintStyle: const TextStyle(color: Colors.white38, fontSize: 13),
-                                      border: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1), borderRadius: BorderRadius.all(Radius.circular(6))),
-                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple[300]!)),
+                                  child: Container(
+                                    constraints: const BoxConstraints(maxWidth: 200),
+                                    child: TextFormField(
+                                      enabled: false,
+                                      controller: _textAmountCtr,
+                                      keyboardType: TextInputType.none,
+                                      style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.black12,
+                                        labelText:
+                                            '$balance : ${NumF.decimals(num: getWalletBalance(UserCtr.to.walletChoose.value!).floorToDouble())} ${getSymbolByWallet(UserCtr.to.walletChoose.value!)}',
+                                        labelStyle: const TextStyle(color: Colors.white, fontSize: 13),
+                                        hintText: 'eg: 1000000',
+                                        hintStyle: const TextStyle(color: Colors.white38, fontSize: 13),
+                                        border: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1), borderRadius: BorderRadius.all(Radius.circular(6))),
+                                        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple[300]!)),
+                                      ),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 5),
+                                const SizedBox(height: 8),
                                 ElevatedButton.icon(
                                   icon: const Icon(Icons.leaderboard, color: Colors.white),
                                   label: Text(staking.toUpperCase(), style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
