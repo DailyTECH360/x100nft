@@ -42,7 +42,8 @@ class ProfitStakItem extends StatelessWidget {
       children: <Widget>[
         data.profitDay! > 0 ? const Icon(Icons.add, size: 15) : const Text(''),
         Text(NumF.decimals(num: data.profitDay ?? 0), style: TextStyle(color: AppColors.primaryColor)),
-        Text(data.symbol!, style: const TextStyle(fontSize: 13, color: Colors.grey)),
+        Wg.logoBoxCircle(pic: getLogoByWallet(data.symbol!), maxH: 30, padding: 3, colorBorder: Colors.black26, color: Colors.white30),
+        // Text(data.symbol!, style: const TextStyle(fontSize: 13, color: Colors.grey)),
       ],
     );
   }
@@ -57,7 +58,7 @@ class ProfitStakItem extends StatelessWidget {
   }
 
   Widget _investPack() {
-    return Text(data.profitDay! > 0 ? '$invest: ${NumF.decimals(num: data.stakAmount!)}' : '${"of day"}: ${data.getDoneDay}/180}',
+    return Text(data.profitDay! > 0 ? '$invest: ${NumF.decimals(num: data.stakAmount!)} ${data.symbol!}' : '${"of day"}: ${data.getDoneDay}}',
         style: const TextStyle(fontSize: 12, color: Colors.black87), overflow: TextOverflow.ellipsis);
   }
 }

@@ -75,7 +75,7 @@ class TransactionsItem extends StatelessWidget {
         ),
         const SizedBox(width: 5),
         // Text(data.symbol!, style: TextStyle(color: AppColors.primaryColor, fontSize: 15, fontWeight: FontWeight.bold)),
-        Image.asset(getLogoByWallet(data.symbol!), height: 30),
+        Wg.logoBoxCircle(pic: getLogoByWallet(data.symbol!), maxH: 30, padding: 3, colorBorder: Colors.black26, color: Colors.white30),
       ],
     );
   }
@@ -85,18 +85,17 @@ class TransactionsItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-          visible: data.type == 'Withdraw' && data.fee! > 0,
+          visible: data.type == 'Withdraw',
           child: Row(
             children: [
               Text(data.type!, style: TextStyle(color: AppColors.primaryColor, fontSize: 11)),
               const SizedBox(width: 5),
               Text(data.symbol!, style: TextStyle(color: AppColors.primaryColor, fontSize: 11, fontWeight: FontWeight.bold)),
-              const SizedBox(width: 3),
               Visibility(
-                visible: data.type == 'Withdraw' && data.fee! > 0,
-                child: Text(
-                  "${data.fee! * 100}%",
-                  style: const TextStyle(color: Colors.orange, fontSize: 12),
+                visible: data.fee! > 0,
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Text("${data.fee! * 100}%", style: const TextStyle(color: Colors.orange, fontSize: 12)),
                 ),
               ),
             ],
