@@ -1183,6 +1183,10 @@ export const wUpdate = functions.region('asia-east2').runWith(time300).firestore
                 'totalWithdrawAmount': admin.firestore.FieldValue.increment(amountTran * rate),
                 'totalWithdraws': admin.firestore.FieldValue.increment(1)
             }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+            db.collection('settings').doc('set').set({
+                'totalWithdrawAmountPen': admin.firestore.FieldValue.increment(-(amountTran * rate)),
+                'totalWithdrawsPen': admin.firestore.FieldValue.increment(-1)
+            }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
         }
     }
     return;
