@@ -143,7 +143,22 @@ Widget lendingAdd(BuildContext context) {
         double _step = UserCtr.to.set!.minInvest! / _chia;
         return Column(
           children: [
-            const SizedBox(height: 8),
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.primarySwatch,
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                border: Border.all(width: 1, color: Colors.white38),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('${lending.toUpperCase()} ${UserCtr.to.set!.lendingProfitDay!}%/$day', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  // const Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0), child: Text('%')),
+                ],
+              ),
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -207,7 +222,7 @@ Widget lendingAdd(BuildContext context) {
                 const SizedBox(width: 5),
                 Expanded(
                   child: ElevatedButton(
-                    child: Text(lending.toUpperCase(), style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                    child: Text('${lending.toUpperCase()} ${UserCtr.to.set!.lendingProfitDay!}%/$day', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                     style: ElevatedButton.styleFrom(primary: AppColors.primarySwatch),
                     onPressed: () {
                       if (CheckSV.minCheck(context, notiText: lendingMin, dk: _.investAmount.value >= (UserCtr.to.set!.minInvest!), min: (UserCtr.to.set!.minInvest!))) {
