@@ -95,7 +95,7 @@ class _PackageWidgetState extends State<PackageWidget> {
                                 InkWell(
                                   onTap: () {
                                     Get.to(NumPage(
-                                        balance: getWalletBalance(UserCtr.to.walletChoose.value!).floorToDouble(), getText: numOfInput, initText: '${UserCtr.to.set!.minInvest!}'));
+                                        max: getWalletBalance(UserCtr.to.walletChoose.value!).floorToDouble(), getText: numOfInput, initText: '${UserCtr.to.set!.minInvest!}'));
                                   },
                                   child: Container(
                                     constraints: const BoxConstraints(maxWidth: 200),

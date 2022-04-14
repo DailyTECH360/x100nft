@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:x100nft/data/user_ctr.dart';
 
 import '../../data/models/models.dart';
 import '../../data/services/services.dart';
+import '../../data/user_ctr.dart';
 import '../../data/utils.dart';
 import '../profit_lending/profit_lend_page.dart';
 

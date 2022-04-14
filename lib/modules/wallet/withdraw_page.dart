@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:x100nft/modules/wallet/wallet_page.dart';
+import '../../data/models/tokenprice_m.dart';
 import '../../data/services/services.dart';
 import '../../data/services/wg_global/num_page.dart';
 import '../../data/user_ctr.dart';
@@ -36,14 +37,20 @@ class WithdrawPage extends GetView<UserCtr> {
                       InkWell(
                         child: Container(
                             padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white10,
-                              border: Border.all(color: Colors.white70),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text('Withdraw amount: ${NumF.decimals(num: UserCtr.to.withdrawAmount.value)}${getSymbolByWallet(controller.walletChoose.value!)}',
-                                style: const TextStyle(color: Colors.white))),
-                        onTap: () => Get.to(const NumPage(getText: wAmount)),
+                            decoration: BoxDecoration(color: Colors.white10, border: Border.all(color: Colors.white70), borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text('Withdraw amount: ', style: TextStyle(color: Colors.white)),
+                                Text('${NumF.decimals(num: UserCtr.to.withdrawAmount.value)} ${getSymbolByWallet(controller.walletChoose.value!)}',
+                                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                              ],
+                            )),
+                        onTap: () => Get.to(NumPage(
+                            getText: wAmount,
+                            initText: '${UserCtr.to.set!.minWithdraw!}',
+                            min: UserCtr.to.set!.minWithdraw!,
+                            max: getWalletBalance(controller.walletChoose.value!))),
                       ),
                       const SizedBox(height: 12),
                       const BankWidget(),
@@ -71,7 +78,8 @@ class WithdrawPage extends GetView<UserCtr> {
                                       content: Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('${getSymbolByWallet(controller.walletChoose.value!)} $withdraw: ${NumF.decimals(num: UserCtr.to.withdrawAmount.value)}',
+                                          Text(withdraw, style: const TextStyle(color: Colors.black), textAlign: TextAlign.center),
+                                          Text('${NumF.decimals(num: UserCtr.to.withdrawAmount.value)} ${getSymbolByWallet(controller.walletChoose.value!)}',
                                               style: const TextStyle(fontWeight: FontWeight.bold)),
                                           Text('Received by:\n${controller.wBankChoose.value.toString().split('_').first}: ',
                                               style: const TextStyle(color: Colors.black), textAlign: TextAlign.center),
@@ -90,13 +98,19 @@ class WithdrawPage extends GetView<UserCtr> {
                                       buttonColor: AppColors.primaryColor,
                                       onConfirm: () async {
                                         Get.back();
+                                        TokenPricePk pri = await getTokenPricePanecakeApi(symbol: getSymbolByWallet(UserCtr.to.walletChoose.value!));
+                                        double _bnbPrice = 0;
+                                        if (getSymbolByWallet(UserCtr.to.walletChoose.value!) == 'BNB') {
+                                          _bnbPrice = await getBnbPriceApi();
+                                        }
                                         await transactionFunc(
                                           context,
                                           type: 'Withdraw',
                                           fee: UserCtr.to.set!.feeWithdraw,
+                                          rate: (getSymbolByWallet(UserCtr.to.walletChoose.value!) == 'BNB') ? _bnbPrice : pri.data!.priceUsd!,
                                           amount: UserCtr.to.withdrawAmount.value,
                                           wallet: controller.walletChoose.value!,
-                                          symbol: symbolUsdt,
+                                          symbol: getSymbolByWallet(controller.walletChoose.value!),
                                           addrW: controller.wBankChoose.value,
                                         ).then((value) => Get.to(const WalletPage()));
                                         Get.back();
@@ -122,5 +136,5 @@ class WithdrawPage extends GetView<UserCtr> {
 Future wAmount(BuildContext context, String text) async {
   // await updateAnyField(coll: 'settings', docId: 'set', data: {'dsdsds': text});
   UserCtr.to.withdrawAmount.value = double.parse((text == '') ? '0' : text);
-  debugPrint('aWAdd: $text');
+  // debugPrint('aWAdd: $text');
 }

@@ -61,6 +61,8 @@ Widget refreshButtonIcon() {
   );
 }
 
+getEmailPhone(String email, String phone) => email != '' ? email : phone;
+
 double getWalletBalance(String wallet) {
   if (wallet == 'wUsd') {
     return UserCtr.to.userDB!.wUsd!;

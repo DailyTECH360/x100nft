@@ -128,8 +128,17 @@ class WalletInfo {
 }
 
 // ------------------------------------------ TRANSFER FUNC
-Future<void> transactionFunc(BuildContext context,
-    {required double amount, required String wallet, required String symbol, double? fee, String? type, String? addrW, UserModel? userFindData}) async {
+Future<void> transactionFunc(
+  BuildContext context, {
+  required double amount,
+  required String wallet,
+  required String symbol,
+  double? fee,
+  double? rate,
+  String? type,
+  String? addrW,
+  UserModel? userFindData,
+}) async {
   Loading.show(text: 'User Update...', textSub: '$notCloseApp!');
   if (type == 'Transfer') {
     // GHI VÀO USER CHỦ (- số dư ví & tạo giao dịch)
@@ -162,6 +171,7 @@ Future<void> transactionFunc(BuildContext context,
     await addTransactions(
       amount: -amount,
       fee: fee ?? 0,
+      rate: rate ?? 1,
       type: type!,
       wallet: wallet,
       symbol: symbol,

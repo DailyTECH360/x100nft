@@ -176,7 +176,7 @@ async function scanTokenDepBEP20(uidColl: string, uidClient: string, address: st
     }
 };
 
-async function depSave(amount: number, uidClient: string, name: string, address: string, tokenSymbol: string, w: string, depId: string) {
+async function depSaveHis(amount: number, uidClient: string, name: string, address: string, tokenSymbol: string, w: string, depId: string) {
     // Ghi vao ls giao dich
     const note: string = `Deposit by ${tokenSymbol}`;
     await db.collection('t').add({
@@ -215,28 +215,28 @@ export const depCreate = functions.region('asia-east2').firestore.document('depo
         name = snapUser.data().name ?? '';
         const email: string = snapUser.data().email ?? '';
         const phone: string = snapUser.data().phone ?? '';
-        await db.collection('deposits').doc(id).set({
-            name: name,
-            phone: phone,
-            email: email,
-        }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+        await db.collection('deposits').doc(id).set({ name: name, phone: phone, email: email }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
     }
 
     if (txhash != '' && id === txhash && amount > 0 && status === 1) {
         // collectUser(address, id);
         if (tokenName === 'Binance-Peg BSC-USD' && tokenSymbol !== 'BNB') {
-            depSave(amount, uidClient, name, address, tokenSymbol, 'wUsd', id).then(async () => {
+            depSaveHis(amount, uidClient, name, address, tokenSymbol, 'wUsd', id).then(async () => {
                 await db.collection("users").doc(uidClient).set({
                     'wUsd': admin.firestore.FieldValue.increment(amount),
                     'totalDepUsdtBep20': admin.firestore.FieldValue.increment(amount),
                 }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+                saveAny('settings', 'set', 'totalDepNumUSDT', 1);
+                saveAny('settings', 'set', 'totalDepUSDT', amount);
             }).catch((err) => console.log("ERROR: " + err));
         } else if (tokenSymbol === 'BNB') {
-            depSave(amount, uidClient, name, address, tokenSymbol, 'wBnb', id).then(async () => {
+            depSaveHis(amount, uidClient, name, address, tokenSymbol, 'wBnb', id).then(async () => {
                 await db.collection("users").doc(uidClient).set({
                     'wBnb': admin.firestore.FieldValue.increment(amount),
                     'totalDepBnb': admin.firestore.FieldValue.increment(amount),
                 }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+                saveAny('settings', 'set', 'totalDepNumBNB', 1);
+                saveAny('settings', 'set', 'totalDepBNB', amount);
             }).catch((err) => console.log("ERROR: " + err));
         }
     }
@@ -258,18 +258,22 @@ export const depUpdate = functions.region('asia-east2').firestore.document('depo
     if (txhash != '' && id === txhash && amount > 0 && status != statusOld && status === 1) {
         // collectUser(address, id);
         if (tokenName === 'Binance-Peg BSC-USD' && tokenSymbol !== 'BNB') {
-            depSave(amount, uidClient, name, address, tokenSymbol, 'wUsd', id).then(async () => {
+            depSaveHis(amount, uidClient, name, address, tokenSymbol, 'wUsd', id).then(async () => {
                 await db.collection("users").doc(uidClient).set({
                     'wUsd': admin.firestore.FieldValue.increment(amount),
                     'totalDepUsdtBep20': admin.firestore.FieldValue.increment(amount),
                 }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+                saveAny('settings', 'set', 'totalDepNumUSDT', 1);
+                saveAny('settings', 'set', 'totalDepUSDT', amount);
             }).catch((err) => console.log("ERROR: " + err));
         } else if (tokenSymbol === 'BNB') {
-            depSave(amount, uidClient, name, address, tokenSymbol, 'wBnb', id).then(async () => {
+            depSaveHis(amount, uidClient, name, address, tokenSymbol, 'wBnb', id).then(async () => {
                 await db.collection("users").doc(uidClient).set({
                     'wBnb': admin.firestore.FieldValue.increment(amount),
                     'totalDepUsdtBnb': admin.firestore.FieldValue.increment(amount),
                 }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
+                saveAny('settings', 'set', 'totalDepNumBNB', 1);
+                saveAny('settings', 'set', 'totalDepBNB', amount);
             }).catch((err) => console.log("ERROR: " + err));
         }
     }
@@ -1123,11 +1127,13 @@ export const wCreate = functions.region('asia-east2').runWith(time300).firestore
 
     const amount: number = dataNew.amount ?? 0;
     const fee: number = dataNew.fee ?? 0;
+    const rate: number = dataNew.rate ?? 1;
 
     // const uUid: string = dataNew.uUid ?? '';
     const uOtherUid: string = dataNew.uOtherUid ?? '';
     const status: string = dataNew.status ?? '';
     const type: string = dataNew.type ?? '';
+    // const symbol: string = dataNew.symbol ?? '';
 
     const amountDuong: number = amount < 0 ? (amount * -1) : amount;
     const amountTran: number = (amountDuong - (amountDuong * fee));
@@ -1136,7 +1142,7 @@ export const wCreate = functions.region('asia-east2').runWith(time300).firestore
         if (uOtherUid.length > 10 && amountTran > 0) {
             // console.log('Withdraw Create uid:', uUid, 'address', uOtherUid, 'toUSD:', amountTran);
             db.collection('settings').doc('set').set({
-                'totalWithdrawAmount': admin.firestore.FieldValue.increment(amountTran),
+                'totalWithdrawAmount': admin.firestore.FieldValue.increment(amountTran * rate),
                 'totalWithdraws': admin.firestore.FieldValue.increment(1)
             }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
         }
@@ -1145,7 +1151,7 @@ export const wCreate = functions.region('asia-east2').runWith(time300).firestore
         if (uOtherUid.length > 10 && amountTran > 0) {
             // console.log('Withdraw Create uid:', uUid, 'address', uOtherUid, 'toUSD:', amountTran);
             db.collection('settings').doc('set').set({
-                'totalWithdrawAmountPen': admin.firestore.FieldValue.increment(amountTran),
+                'totalWithdrawAmountPen': admin.firestore.FieldValue.increment(amountTran * rate),
                 'totalWithdrawsPen': admin.firestore.FieldValue.increment(1)
             }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
         }
@@ -1160,6 +1166,7 @@ export const wUpdate = functions.region('asia-east2').runWith(time300).firestore
 
     const amount: number = dataNew.amount ?? 0;
     const fee: number = dataNew.fee ?? 0;
+    const rate: number = dataNew.rate ?? 1;
     const amountDuong: number = amount < 0 ? (amount * -1) : amount;
     const amountTran: number = (amountDuong - (amountDuong * fee));
 
@@ -1173,7 +1180,7 @@ export const wUpdate = functions.region('asia-east2').runWith(time300).firestore
         if (address.length > 10 && amountTran > 0) {
             // console.log('Withdraw Create uid:', uUid, 'address', uOtherUid, 'toUSD:', amountTran);
             db.collection('settings').doc('set').set({
-                'totalWithdrawAmount': admin.firestore.FieldValue.increment(amountTran),
+                'totalWithdrawAmount': admin.firestore.FieldValue.increment(amountTran * rate),
                 'totalWithdraws': admin.firestore.FieldValue.increment(1)
             }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
         }
@@ -1184,6 +1191,7 @@ export const wDelete = functions.region('asia-east2').runWith(time360).firestore
     const dataNew = snap.data();
 
     const amount: number = dataNew.amount ?? 0;
+    const rate: number = dataNew.rate ?? 1;
     const amountDuong: number = amount < 0 ? amount * -1 : amount;
 
     const uUid: string = dataNew.uUid ?? '';
@@ -1191,7 +1199,7 @@ export const wDelete = functions.region('asia-east2').runWith(time360).firestore
     const type: string = dataNew.type ?? '';
     if (type === 'Withdraw' && status === 'done' && uUid.length > 6) {
         db.collection('settings').doc('set').set({
-            'totalWithdrawAmount': admin.firestore.FieldValue.increment(-amountDuong),
+            'totalWithdrawAmount': admin.firestore.FieldValue.increment(-(amountDuong * rate)),
             'totalWithdraws': admin.firestore.FieldValue.increment(-1)
         }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
     }
@@ -1202,7 +1210,7 @@ export const wDelete = functions.region('asia-east2').runWith(time360).firestore
         }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
 
         db.collection('settings').doc('set').set({
-            'totalWithdrawAmountPen': admin.firestore.FieldValue.increment(-amountDuong),
+            'totalWithdrawAmountPen': admin.firestore.FieldValue.increment(-(amountDuong * rate)),
             'totalWithdrawsPen': admin.firestore.FieldValue.increment(-1)
         }, { merge: true }).catch((err) => console.log('ERROR: ' + err));
     }

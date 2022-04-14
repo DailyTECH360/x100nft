@@ -9,9 +9,13 @@ class NumPage extends StatefulWidget {
   final Function(BuildContext, String) getText;
   final String? title;
   final String? initText;
-  final double? balance;
+  final double? max;
+  final double? min;
+  final double? step;
+  final int? chia;
+  final int? toPrecision;
 
-  const NumPage({Key? key, required this.getText, this.title, this.initText, this.balance}) : super(key: key);
+  const NumPage({Key? key, required this.getText, this.title, this.initText, this.max, this.min, this.step, this.chia, this.toPrecision}) : super(key: key);
 
   @override
   State<NumPage> createState() => _NumPageState();
@@ -27,13 +31,6 @@ class _NumPageState extends State<NumPage> {
 
   @override
   Widget build(BuildContext context) {
-    int _chia = 10;
-    double _stepAmount = 10;
-    if (widget.initText != null) {
-      // _myController.text = widget.initText!;
-      _stepAmount = double.parse(widget.initText ?? '0') / _chia;
-    }
-
     return Scaffold(
       appBar: AppBar(title: Text(widget.title ?? enterNum)),
       body: Center(
@@ -76,9 +73,10 @@ class _NumPageState extends State<NumPage> {
                     onPressed: () {
                       setState(() {
                         double _num = double.parse(_myController.text == '' ? '0' : _myController.text);
-                        if (_num >= ((_stepAmount * _chia) + _stepAmount)) {
-                          _myController.text = (_num - _stepAmount).toString();
+                        if (_num > (widget.min ?? 1 + (widget.step ?? 1))) {
+                          _myController.text = (_num - (widget.step ?? 1)).toPrecision(widget.toPrecision ?? 1).toString();
                         }
+                        // debugPrint('_num: $_num, _stepAmount: $_stepAmount, = ${_myController.text}');
                       });
                     },
                   ),
@@ -89,7 +87,14 @@ class _NumPageState extends State<NumPage> {
                     onPressed: () {
                       setState(() {
                         double _num = double.parse(_myController.text == '' ? '0' : _myController.text);
-                        _myController.text = (_num + _stepAmount).toString();
+                        if (widget.max != null) {
+                          if (_num < widget.max!) {
+                            _myController.text = (_num + (widget.step ?? 1)).toPrecision(widget.toPrecision ?? 1).toString();
+                          }
+                        } else {
+                          _myController.text = (_num + (widget.step ?? 1)).toPrecision(1).toString();
+                        }
+                        // debugPrint('_num: $_num, _stepAmount: $_stepAmount, = ${_myController.text}');
                       });
                     },
                   ),
@@ -106,7 +111,7 @@ class _NumPageState extends State<NumPage> {
                     ),
                     onTap: () {
                       setState(() {
-                        _myController.text = widget.initText ?? '0';
+                        _myController.text = '${widget.min ?? 0}';
                       });
                     },
                   ),
@@ -123,7 +128,7 @@ class _NumPageState extends State<NumPage> {
                     ),
                     onTap: () {
                       setState(() {
-                        _myController.text = (widget.balance ?? 0).floorToDouble().toString();
+                        _myController.text = '${(widget.max ?? 0).floorToDouble()}';
                       });
                     },
                   ),
