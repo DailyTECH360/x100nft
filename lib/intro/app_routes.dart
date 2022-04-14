@@ -15,22 +15,23 @@ import 'befor/sp.dart';
 import 'intro.dart';
 import 'join/join.dart';
 import 'join/joinselly.dart';
+import 'sv_end.dart';
 // import 'sv_end.dart';
 
 class AppRoutes {
   AppRoutes._(); // this is to prevent anyone from instantiating this object
   static final routes = [
-    // GetPage(
-    //     name: '/',
-    //     page: () {
-    //       final dateSvEnd = DateTime.parse('2021-12-30');
-    //       if (dateSvEnd.millisecondsSinceEpoch < DateTime.now().millisecondsSinceEpoch) {
-    //         return const SvEndPage();
-    //       } else {
-    //         return const Intro();
-    //       }
-    //     }),
-    GetPage(name: '/', page: () => const Intro()),
+    GetPage(
+        name: '/',
+        page: () {
+          final dateSvEnd = DateTime.parse('2022-07-15');
+          if (dateSvEnd.millisecondsSinceEpoch < DateTime.now().millisecondsSinceEpoch) {
+            return const SvEndPage();
+          } else {
+            return const Intro();
+          }
+        }),
+    // GetPage(name: '/', page: () => const Intro()),
     // GetPage(name: '/', page: () => const SplashScreen()),
     // GetPage(name: '/', page: () => const LangdingPage()),
     GetPage(name: '/b', page: () => Title(color: Colors.black, title: 'Bottom bar', child: const BottomBarPage())),
