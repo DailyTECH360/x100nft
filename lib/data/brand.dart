@@ -22,7 +22,7 @@ String symbolToken = 'TLG';
 String tokenName = 'TLG';
 int tokenDecimal = 8;
 int tokenTotalSupply = 1000000000000;
-const tokenIcon = 'https://i.im.ge/2022/01/28/XiiXaP.png';
+const tokenIcon = 'https://i.im.ge/2022/04/07/lZBQWM.png';
 
 String symbolToken2 = 'TLG';
 
