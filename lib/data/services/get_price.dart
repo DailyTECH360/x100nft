@@ -30,8 +30,8 @@ Future<TokenPricePk> getTokenPricePanecakeApi({required String symbol}) async {
     token = '0xcc42724c6683b7e57334c4e856f4c9965ed682bd';
   } else if (symbol == 'SHIBA') {
     token = '0x2859e4544C4bB03966803b044A93563Bd2D0DD4D';
-  } else if (symbol == 'CELO') {
-    token = '';
+  } else if (symbol == 'ADA') {
+    token = '0x3ee2200efb3400fabb9aacf31297cbdd1d435d47';
   } else {
     '';
   }

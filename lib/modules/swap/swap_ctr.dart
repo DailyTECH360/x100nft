@@ -113,10 +113,10 @@ List<WalletInfoModel> wListTo = [
     iconImage: getLogoByWallet(getSymbolByWallet('wShiba')),
     wallet: 'wShiba',
   ),
-  // WalletInfoModel(
-  //   name: getSymbolByWallet('wCelo'),
-  //   symbol: getSymbolByWallet('wCelo'),
-  //   iconImage: getLogoByWallet(getSymbolByWallet('wCelo')),
-  //   wallet: 'wCelo',
-  // ),
+  WalletInfoModel(
+    name: getSymbolByWallet('wAda'),
+    symbol: getSymbolByWallet('wAda'),
+    iconImage: getLogoByWallet(getSymbolByWallet('wAda')),
+    wallet: 'wAda',
+  ),
 ];

@@ -145,9 +145,9 @@ List<WalletInfo> walletDataList = [
     wallet: 'wShiba',
   ),
   WalletInfo(
-    name: getSymbolByWallet('wCelo'),
-    symbol: getSymbolByWallet('wCelo'),
-    iconImage: getLogoByWallet(getSymbolByWallet('wCelo')),
-    wallet: 'wCelo',
+    name: getSymbolByWallet('wAda'),
+    symbol: getSymbolByWallet('wAda'),
+    iconImage: getLogoByWallet(getSymbolByWallet('wAda')),
+    wallet: 'wAda',
   ),
 ];

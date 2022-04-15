@@ -52,7 +52,7 @@ class StakingPage extends StatelessWidget {
                                           UserCtr.to.walletChoose.value! == 'wPoly' ||
                                           UserCtr.to.walletChoose.value! == 'wDot' ||
                                           UserCtr.to.walletChoose.value! == 'wShiba' ||
-                                          UserCtr.to.walletChoose.value! == 'wCelo'),
+                                          UserCtr.to.walletChoose.value! == 'wAda'),
                                       child: Padding(
                                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                                         child: PackageWidget(mainU: UserCtr.to.userDB!, chooseU: UserCtr.to.userDB!),

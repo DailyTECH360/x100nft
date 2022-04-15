@@ -82,7 +82,7 @@ class UserModel {
   double? wDot;
   double? wPoly;
   double? wShiba;
-  double? wCelo;
+  double? wAda;
   double? wCom;
   double? wComBNB;
   double? wComUSDT;
@@ -191,7 +191,7 @@ class UserModel {
     this.wDot,
     this.wPoly,
     this.wShiba,
-    this.wCelo,
+    this.wAda,
     this.wCom,
     this.wComBNB,
     this.wComUSDT,
@@ -299,7 +299,7 @@ class UserModel {
     wDot = documentSnapshot.data()!['wDot'] as double? ?? 0.0;
     wPoly = documentSnapshot.data()!['wPoly'] as double? ?? 0.0;
     wShiba = documentSnapshot.data()!['wShiba'] as double? ?? 0.0;
-    wCelo = documentSnapshot.data()!['wCelo'] as double? ?? 0.0;
+    wAda = documentSnapshot.data()!['wAda'] as double? ?? 0.0;
 
     wToken = documentSnapshot.data()!['wToken'] as double? ?? 0.0;
 

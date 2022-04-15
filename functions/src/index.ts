@@ -1113,8 +1113,8 @@ function getWalletBySymbol(symbol: string) {
         return 'wPoly';
     } else if (symbol == 'SHIBA') {
         return 'wShiba';
-    } else if (symbol == 'CELO') {
-        return 'wCelo';
+    } else if (symbol == 'ADA') {
+        return 'wAda';
     } else {
         return '';
     }

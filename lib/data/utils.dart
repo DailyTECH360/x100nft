@@ -74,8 +74,8 @@ double getWalletBalance(String wallet) {
     return UserCtr.to.userDB!.wPoly!;
   } else if (wallet == 'wShiba') {
     return UserCtr.to.userDB!.wShiba!;
-  } else if (wallet == 'wCelo') {
-    return UserCtr.to.userDB!.wCelo!;
+  } else if (wallet == 'wAda') {
+    return UserCtr.to.userDB!.wAda!;
   } else if (wallet == 'wToken') {
     return UserCtr.to.userDB!.wToken!;
   } else if (wallet == 'wCom') {
@@ -128,8 +128,8 @@ String getSymbolByWallet(String wallet) {
     return 'POLYGON';
   } else if (wallet == 'wShiba') {
     return 'SHIBA';
-  } else if (wallet == 'wCelo') {
-    return 'CELO';
+  } else if (wallet == 'wAda') {
+    return 'ADA';
   } else if (wallet == 'wToken') {
     return symbolToken;
   } else if (wallet == 'wCom') {
@@ -152,8 +152,8 @@ String getLogoByWallet(String symbol) {
     return 'assets/crypto/poly.png';
   } else if (symbol == 'SHIBA') {
     return 'assets/crypto/shiba.png';
-  } else if (symbol == 'CELO') {
-    return 'assets/crypto/celo.png';
+  } else if (symbol == 'ADA') {
+    return 'assets/crypto/ada.png';
   } else {
     return '';
   }
