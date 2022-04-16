@@ -21,7 +21,7 @@ class SwapCtr extends GetxController {
   Rx<double> rateUsdt = 0.0.obs;
   Rx<double> get rate => (ojFrom.value.symbol! == 'BNB' ? rateBnb.value : rateUsdt.value).obs;
   Rx<double> get feeSwap => (UserCtr.to.set!.feeSwap!).obs;
-  Rx<double> get amountTo => ((amountFrom.value * rate.value) - ((amountFrom.value * rateBnb.value) * (feeSwap.value / 100))).obs;
+  Rx<double> get amountTo => ((amountFrom.value / rate.value) - ((amountFrom.value / rate.value) * (feeSwap.value / 100))).obs;
 
   @override
   onInit() async {
