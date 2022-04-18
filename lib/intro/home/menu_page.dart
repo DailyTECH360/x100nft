@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../data/services/twofa_page.dart';
-import '../../data/services/wg_global/bottom_bar/page/home_page.dart';
-import '../../data/services/wg_global/form_page.dart';
-import '../../data/services/wg_global/init_set.dart';
-import '../../data/services/wg_global/pinput.dart';
-import '../../data/services/wg_global/screen_lock.dart';
-import '../../data/services/wg_global/vk_multi.dart';
 import '../../data/user_ctr.dart';
 import '../../data/utils.dart';
 import '../../modules/deposit/deposit_page.dart';
@@ -15,7 +10,6 @@ import '../../modules/lending/mylending_page.dart';
 import '../../modules/profile/profile_page.dart';
 import '../../modules/staking/mystaking_page.dart';
 import '../../modules/support/support_page.dart';
-import '../../modules/swap/swap_page.dart';
 import '../../modules/team/team_page.dart';
 import '../../modules/wallet/wallet_page.dart';
 
@@ -53,21 +47,6 @@ class Menu extends GetView<UserCtr> {
               controller.signOut();
               controller.onClose();
             },
-          ),
-          Visibility(
-            visible: controller.userDB!.role == 'dev',
-            child: Column(
-              children: const [
-                Divider(color: Colors.white24, height: 24, thickness: 1),
-                MenuList(name: 'Set Page', icon: Icons.add, page: SetInitPage()),
-                MenuList(name: 'Form Page', icon: Icons.add, page: FormPage()),
-                MenuList(name: 'Virtual keyboard', icon: Icons.add, page: VirtualkeyboardPage(getText: wAmount)),
-                MenuList(name: 'PIN', icon: Icons.add, page: PinPutView()),
-                MenuList(name: 'Screen Lock', icon: Icons.add, page: ScreenLockPage()),
-                MenuList(name: 'Swap', icon: Icons.add, page: SwapPage()),
-                MenuList(name: 'Bottom Bar', icon: Icons.add, page: BottomBarPage()),
-              ],
-            ),
           ),
         ],
       ),
