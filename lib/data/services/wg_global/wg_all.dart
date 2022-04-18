@@ -972,7 +972,7 @@ class Wg {
       endWidget: Visibility(visible: !textEnd.isBlank!, child: Text(textEnd)),
       widgetBuilder: (_, CurrentRemainingTime? time) {
         if (time == null) {
-          return const Text('NEED BUY NOW!');
+          return const Text('');
         }
         return Row(
           mainAxisSize: MainAxisSize.min,

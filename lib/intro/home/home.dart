@@ -195,14 +195,14 @@ class Home extends StatelessWidget {
                             child: Image.asset('assets/brand/X100NFT_Ngang.png'),
                           ),
                           const SizedBox(height: 100),
-                          Center(
-                            child: Wg.countdownTimerNew(
-                              endTime: UserCtr.to.set!.deadline!.millisecondsSinceEpoch,
-                              sizeTime: 20,
-                              colorText: Colors.white,
-                              colorTime: Colors.orangeAccent,
-                            ),
-                          ),
+                          // Center(
+                          //   child: Wg.countdownTimerNew(
+                          //     endTime: UserCtr.to.set!.deadline!.millisecondsSinceEpoch,
+                          //     sizeTime: 20,
+                          //     colorText: Colors.white,
+                          //     colorTime: Colors.orangeAccent,
+                          //   ),
+                          // ),
                           const CopyRightVersion(),
                           const SizedBox(height: 30),
                         ],
