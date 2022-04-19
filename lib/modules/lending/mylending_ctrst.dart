@@ -159,6 +159,7 @@ Widget lendingAdd(BuildContext context) {
                 ],
               ),
             ),
+            const SizedBox(height: 8),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -206,7 +207,7 @@ Widget lendingAdd(BuildContext context) {
                 ),
               ],
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
