@@ -36,6 +36,7 @@ export 'string/strings_all.dart';
 // firebase deploy --only hosting
 // firebase hosting:channel:deploy pre
 
+// https://github.com/An1603/x100nft
 // firebase deploy --only functions
 // firebase deploy --only firestore:indexes
 // firebase deploy --only firestore:rules
