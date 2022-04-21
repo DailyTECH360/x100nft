@@ -19,8 +19,6 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:week_of_year/week_of_year.dart';
-
-import 'app_color.dart';
 import 'brand.dart';
 import 'services/services.dart';
 import 'services/wg_global/wg_all.dart';
