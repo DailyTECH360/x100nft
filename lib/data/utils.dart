@@ -20,7 +20,6 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:week_of_year/week_of_year.dart';
 
-import '../modules/todo/todo_page.dart';
 import 'app_color.dart';
 import 'brand.dart';
 import 'services/services.dart';
@@ -533,40 +532,6 @@ void launchUrl(BuildContext context, {required String url}) async {
   } else {
     showTopSnackBar(context, CustomSnackBar.error(message: 'Could not launch $url'));
     throw "Could not launch $url";
-  }
-}
-
-class TodoHomeIcon extends StatelessWidget {
-  const TodoHomeIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(5),
-              // constraints: BoxConstraints(minWidth: 250, maxHeight: 100, maxWidth: 700),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-                border: Border.all(color: Colors.white38),
-                gradient: AppColors.linearGLight,
-                boxShadow: AppColors.neumorpShadow,
-              ),
-              child: Image.asset('assets/todo_icon.png', height: 100),
-            ),
-            const SizedBox(height: 5),
-            const Text('TODO APP', style: TextStyle(color: Colors.white)),
-          ],
-        ),
-        onTap: () {
-          Get.to(const TodoPage());
-        });
   }
 }
 
